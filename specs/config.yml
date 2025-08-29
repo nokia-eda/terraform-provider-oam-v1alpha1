@@ -1,0 +1,87 @@
+provider:
+  name: oam
+
+data_sources:
+  app_group:
+    read:
+      path: /apps/oam.eda.nokia.com
+      method: GET
+
+  mirror:
+    read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: GET
+
+  mirror_list:
+    read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors
+      method: GET
+
+  ping:
+    read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings/{name}
+      method: GET
+
+  ping_list:
+    read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings
+      method: GET
+
+  resource_list:
+    read:
+      path: /apps/oam.eda.nokia.com/v1alpha1
+      method: GET
+
+  tech_support:
+    read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports/{name}
+      method: GET
+
+  tech_support_list:
+    read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports
+      method: GET
+
+  threshold:
+    read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: GET
+
+  threshold_list:
+    read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds
+      method: GET
+
+  workflow_get_inputs_resp_elem:
+    read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings/{name}/_input
+      method: GET
+
+resources:
+  mirror:
+    create:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors
+      method: POST
+    read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: GET
+    update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: PUT
+    delete:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: DELETE
+
+  threshold:
+    create:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds
+      method: POST
+    read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: GET
+    update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: PUT
+    delete:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: DELETE

@@ -1,0 +1,184 @@
+app_group:
+  - read:
+      path: /apps/oam.eda.nokia.com
+      method: GET
+
+patch:
+  - update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: PATCH
+  - update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: PATCH
+
+resource_history:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}/_revs
+      method: GET
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}/_revs
+      method: GET
+
+resource_list:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1
+      method: GET
+
+resource_topology:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}/_topology
+      method: GET
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}/_topology
+      method: GET
+
+status:
+  - delete:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: DELETE
+  - delete:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: DELETE
+
+ui_result:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/_ui/{pathname}
+      method: GET
+
+workflow_get_inputs_resp_elem:
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings/{name}/_input
+      method: GET
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports/{name}/_input
+      method: GET
+
+workflow_input_data:
+  - update:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings/{name}/_input
+      method: PUT
+  - update:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports/{name}/_input
+      method: PUT
+
+com.nokia.eda.oam.v1alpha1.mirror:
+  - create:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors
+      method: POST
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: GET
+  - update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: PUT
+
+com.nokia.eda.oam.v1alpha1.mirror_list:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/mirrors
+      method: GET
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors
+      method: GET
+  - delete:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors
+      method: DELETE
+
+com.nokia.eda.oam.v1alpha1.mirror_deleted_resources:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/_deleted
+      method: GET
+
+com.nokia.eda.oam.v1alpha1.ping:
+  - create:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings
+      method: POST
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings/{name}
+      method: GET
+
+com.nokia.eda.oam.v1alpha1.ping_list:
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings
+      method: GET
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/pings
+      method: GET
+
+com.nokia.eda.oam.v1alpha1.tech_support:
+  - create:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports
+      method: POST
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports/{name}
+      method: GET
+
+com.nokia.eda.oam.v1alpha1.tech_support_list:
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports
+      method: GET
+  - read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/techsupports
+      method: GET
+
+com.nokia.eda.oam.v1alpha1.threshold:
+  - create:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds
+      method: POST
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: GET
+  - update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: PUT
+
+com.nokia.eda.oam.v1alpha1.threshold_list:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds
+      method: GET
+  - delete:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds
+      method: DELETE
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/thresholds
+      method: GET
+
+com.nokia.eda.oam.v1alpha1.threshold_deleted_resources:
+  - read:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/_deleted
+      method: GET
+
+totalPaths: 29
+totalSchemas: 49
+usedSchemas: 19
+unusedSchemas: 30
+unusedSchemaList:
+  - AppGroupVersion
+  - ErrorIndex
+  - ErrorItem
+  - ErrorResponse
+  - K8SPatchOp
+  - OverlayState
+  - Resource
+  - ResourceHistoryEntry
+  - StatusDetails
+  - TopoAttrMetadata
+  - TopoElemMetadata
+  - TopoLinkEndpoint
+  - TopoNodeGrouping
+  - TopoOverlayEndpoint
+  - TopoOverlayEndpointState
+  - TopoOverlayLink
+  - TopoOverlayLinkState
+  - TopoOverlayNode
+  - TopoOverlayNodeState
+  - TopoSchema
+  - Topology
+  - WorkflowId
+  - WorkflowIdentifier
+  - WorkflowInputDataElem
+  - com.nokia.eda.oam.v1alpha1.Mirror_DeletedResourceEntry
+  - com.nokia.eda.oam.v1alpha1.Mirror_metadata
+  - com.nokia.eda.oam.v1alpha1.Ping_metadata
+  - com.nokia.eda.oam.v1alpha1.TechSupport_metadata
+  - com.nokia.eda.oam.v1alpha1.Threshold_DeletedResourceEntry
+  - com.nokia.eda.oam.v1alpha1.Threshold_metadata
