@@ -70,7 +70,7 @@ Optional:
 - `direction` (String) The direction of the traffic being mirrored.
 - `filters` (Attributes List) (see [below for nested schema](#nestedatt--spec--sources--filters))
 - `interfaces` (Attributes) Reference to an Interface resource to be mirrored.  Traffic from the entire Interface will be mirrored for any selected Interfaces. (see [below for nested schema](#nestedatt--spec--sources--interfaces))
-- `subinterfaces_2` (Attributes) (see [below for nested schema](#nestedatt--spec--sources--subinterfaces_2))
+- `subinterfaces` (Attributes) (see [below for nested schema](#nestedatt--spec--sources--subinterfaces))
 
 <a id="nestedatt--spec--sources--filters"></a>
 ### Nested Schema for `spec.sources.filters`
@@ -144,11 +144,11 @@ Optional:
 Optional:
 
 - `bridge_interfaces` (List of String) List of BridgeInterfaces, all traffic from all BridgeInterfaces in the list will be used as sources to be mirrored. A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.
-- `subinterfaces_1` (Attributes List) List of Interfaces and subinterface indices (see [below for nested schema](#nestedatt--spec--sources--filters--subinterfaces--subinterfaces_1))
+- `subinterfaces` (Attributes List) List of Interfaces and subinterface indices (see [below for nested schema](#nestedatt--spec--sources--filters--subinterfaces--subinterfaces))
 - `vlans` (List of String) List of VLAN resources, all subinterfaces attached to the VLAN will be used as sources to be mirrored.  A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.
 
-<a id="nestedatt--spec--sources--filters--subinterfaces--subinterfaces_1"></a>
-### Nested Schema for `spec.sources.filters.subinterfaces.subinterfaces_1`
+<a id="nestedatt--spec--sources--filters--subinterfaces--subinterfaces"></a>
+### Nested Schema for `spec.sources.filters.subinterfaces.subinterfaces`
 
 Optional:
 
@@ -168,17 +168,17 @@ Optional:
 - `interfaces` (List of String) List of Interfaces to be mirrored.  Traffic from the entire Interface will be mirrored for any selected Interfaces.  If both a label selector is used and a list of Interfaces is provided, a combination of all selected and provided interfaces will be mirrored.
 
 
-<a id="nestedatt--spec--sources--subinterfaces_2"></a>
-### Nested Schema for `spec.sources.subinterfaces_2`
+<a id="nestedatt--spec--sources--subinterfaces"></a>
+### Nested Schema for `spec.sources.subinterfaces`
 
 Optional:
 
 - `bridge_interfaces` (List of String) List of BridgeInterfaces, all traffic from all BridgeInterfaces in the list will be used as sources to be mirrored. A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.
-- `subinterfaces_3` (Attributes List) List of Interfaces and subinterface indices (see [below for nested schema](#nestedatt--spec--sources--subinterfaces_2--subinterfaces_3))
+- `subinterfaces` (Attributes List) List of Interfaces and subinterface indices (see [below for nested schema](#nestedatt--spec--sources--subinterfaces--subinterfaces))
 - `vlans` (List of String) List of VLAN resources, all subinterfaces attached to the VLAN will be used as sources to be mirrored.  A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.
 
-<a id="nestedatt--spec--sources--subinterfaces_2--subinterfaces_3"></a>
-### Nested Schema for `spec.sources.subinterfaces_2.subinterfaces_3`
+<a id="nestedatt--spec--sources--subinterfaces--subinterfaces"></a>
+### Nested Schema for `spec.sources.subinterfaces.subinterfaces`
 
 Optional:
 
@@ -210,15 +210,15 @@ Read-Only:
 - `mirror_id` (String) Mirror Identifier used as the name of the mirror.
 - `num_active_interfaces` (Number) Total number of active Interfaces used as sources of the mirror.
 - `num_active_subinterfaces` (Number) Total number of active subinterfaces used as sources of the mirror.
-- `num_active_v4filter_subinterfaces` (Number) Total number of active subinterfaces used as sources of the mirror derived from IPV4Filter associations.
-- `num_active_v6filter_subinterfaces` (Number) Total number of active subinterfaces used as sources of the mirror derived from IPV6Filter associations.
-- `num_active_vlansubinterfaces` (Number) Total number of active subinterfaces used as sources of the mirror derived from VLAN resource references.
+- `num_active_v4_filter_subinterfaces` (Number) Total number of active subinterfaces used as sources of the mirror derived from IPV4Filter associations.
+- `num_active_v6_filter_subinterfaces` (Number) Total number of active subinterfaces used as sources of the mirror derived from IPV6Filter associations.
+- `num_active_vlan_subinterfaces` (Number) Total number of active subinterfaces used as sources of the mirror derived from VLAN resource references.
 - `number_active_bridge_interfaces` (Number) Total number of active subinterfaces used as sources of the mirror derived from BridgeInterface resource references.
 - `operational_state` (String) Indicates the current operational state of the Mirror instance.
-- `subinterfaces_4` (Attributes List) List of members in this Interface. (see [below for nested schema](#nestedatt--status--subinterfaces_4))
+- `subinterfaces` (Attributes List) List of members in this Interface. (see [below for nested schema](#nestedatt--status--subinterfaces))
 
-<a id="nestedatt--status--subinterfaces_4"></a>
-### Nested Schema for `status.subinterfaces_4`
+<a id="nestedatt--status--subinterfaces"></a>
+### Nested Schema for `status.subinterfaces`
 
 Read-Only:
 

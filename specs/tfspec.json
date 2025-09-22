@@ -656,21 +656,21 @@
                                     }
                                 },
                                 {
-                                    "name": "num_active_v4filter_subinterfaces",
+                                    "name": "num_active_v4_filter_subinterfaces",
                                     "int64": {
                                         "computed_optional_required": "computed",
                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from IPV4Filter associations."
                                     }
                                 },
                                 {
-                                    "name": "num_active_v6filter_subinterfaces",
+                                    "name": "num_active_v6_filter_subinterfaces",
                                     "int64": {
                                         "computed_optional_required": "computed",
                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from IPV6Filter associations."
                                     }
                                 },
                                 {
-                                    "name": "num_active_vlansubinterfaces",
+                                    "name": "num_active_vlan_subinterfaces",
                                     "int64": {
                                         "computed_optional_required": "computed",
                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from VLAN resource references."
@@ -769,7 +769,7 @@
                         }
                     },
                     {
-                        "name": "labelselector",
+                        "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
                             "description": "a label selector string to filter the results based on CR labels"
@@ -1358,21 +1358,21 @@
                                                     }
                                                 },
                                                 {
-                                                    "name": "num_active_v4filter_subinterfaces",
+                                                    "name": "num_active_v4_filter_subinterfaces",
                                                     "int64": {
                                                         "computed_optional_required": "computed",
                                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from IPV4Filter associations."
                                                     }
                                                 },
                                                 {
-                                                    "name": "num_active_v6filter_subinterfaces",
+                                                    "name": "num_active_v6_filter_subinterfaces",
                                                     "int64": {
                                                         "computed_optional_required": "computed",
                                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from IPV6Filter associations."
                                                     }
                                                 },
                                                 {
-                                                    "name": "num_active_vlansubinterfaces",
+                                                    "name": "num_active_vlan_subinterfaces",
                                                     "int64": {
                                                         "computed_optional_required": "computed",
                                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from VLAN resource references."
@@ -1722,7 +1722,7 @@
                         }
                     },
                     {
-                        "name": "labelselector",
+                        "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
                             "description": "a label selector string to filter the results based on CR labels"
@@ -2193,7 +2193,7 @@
                         }
                     },
                     {
-                        "name": "labelselector",
+                        "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
                             "description": "a label selector string to filter the results based on CR labels"
@@ -2592,7 +2592,7 @@
                         }
                     },
                     {
-                        "name": "labelselector",
+                        "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
                             "description": "a label selector string to filter the results based on CR labels"
@@ -3750,21 +3750,21 @@
                                     }
                                 },
                                 {
-                                    "name": "num_active_v4filter_subinterfaces",
+                                    "name": "num_active_v4_filter_subinterfaces",
                                     "int64": {
                                         "computed_optional_required": "computed_optional",
                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from IPV4Filter associations."
                                     }
                                 },
                                 {
-                                    "name": "num_active_v6filter_subinterfaces",
+                                    "name": "num_active_v6_filter_subinterfaces",
                                     "int64": {
                                         "computed_optional_required": "computed_optional",
                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from IPV6Filter associations."
                                     }
                                 },
                                 {
-                                    "name": "num_active_vlansubinterfaces",
+                                    "name": "num_active_vlan_subinterfaces",
                                     "int64": {
                                         "computed_optional_required": "computed_optional",
                                         "description": "Total number of active subinterfaces used as sources of the mirror derived from VLAN resource references."

@@ -325,7 +325,7 @@ func MirrorDataSourceSchema(ctx context.Context) schema.Schema {
 													Description:         "List of BridgeInterfaces, all traffic from all BridgeInterfaces in the list will be used as sources to be mirrored. A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.",
 													MarkdownDescription: "List of BridgeInterfaces, all traffic from all BridgeInterfaces in the list will be used as sources to be mirrored. A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.",
 												},
-												"subinterfaces_1": schema.ListNestedAttribute{
+												"subinterfaces": schema.ListNestedAttribute{
 													NestedObject: schema.NestedAttributeObject{
 														Attributes: map[string]schema.Attribute{
 															"index": schema.Int64Attribute{
@@ -403,7 +403,7 @@ func MirrorDataSourceSchema(ctx context.Context) schema.Schema {
 								Description:         "Reference to an Interface resource to be mirrored.  Traffic from the entire Interface will be mirrored for any selected Interfaces.",
 								MarkdownDescription: "Reference to an Interface resource to be mirrored.  Traffic from the entire Interface will be mirrored for any selected Interfaces.",
 							},
-							"subinterfaces_2": schema.SingleNestedAttribute{
+							"subinterfaces": schema.SingleNestedAttribute{
 								Attributes: map[string]schema.Attribute{
 									"bridge_interfaces": schema.ListAttribute{
 										ElementType:         types.StringType,
@@ -411,7 +411,7 @@ func MirrorDataSourceSchema(ctx context.Context) schema.Schema {
 										Description:         "List of BridgeInterfaces, all traffic from all BridgeInterfaces in the list will be used as sources to be mirrored. A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.",
 										MarkdownDescription: "List of BridgeInterfaces, all traffic from all BridgeInterfaces in the list will be used as sources to be mirrored. A combination of VLANs, BridgeInterfaces and subinterfaces can be configured as sources together.",
 									},
-									"subinterfaces_3": schema.ListNestedAttribute{
+									"subinterfaces": schema.ListNestedAttribute{
 										NestedObject: schema.NestedAttributeObject{
 											Attributes: map[string]schema.Attribute{
 												"index": schema.Int64Attribute{
@@ -496,17 +496,17 @@ func MirrorDataSourceSchema(ctx context.Context) schema.Schema {
 						Description:         "Total number of active subinterfaces used as sources of the mirror.",
 						MarkdownDescription: "Total number of active subinterfaces used as sources of the mirror.",
 					},
-					"num_active_v4filter_subinterfaces": schema.Int64Attribute{
+					"num_active_v4_filter_subinterfaces": schema.Int64Attribute{
 						Computed:            true,
 						Description:         "Total number of active subinterfaces used as sources of the mirror derived from IPV4Filter associations.",
 						MarkdownDescription: "Total number of active subinterfaces used as sources of the mirror derived from IPV4Filter associations.",
 					},
-					"num_active_v6filter_subinterfaces": schema.Int64Attribute{
+					"num_active_v6_filter_subinterfaces": schema.Int64Attribute{
 						Computed:            true,
 						Description:         "Total number of active subinterfaces used as sources of the mirror derived from IPV6Filter associations.",
 						MarkdownDescription: "Total number of active subinterfaces used as sources of the mirror derived from IPV6Filter associations.",
 					},
-					"num_active_vlansubinterfaces": schema.Int64Attribute{
+					"num_active_vlan_subinterfaces": schema.Int64Attribute{
 						Computed:            true,
 						Description:         "Total number of active subinterfaces used as sources of the mirror derived from VLAN resource references.",
 						MarkdownDescription: "Total number of active subinterfaces used as sources of the mirror derived from VLAN resource references.",
@@ -521,7 +521,7 @@ func MirrorDataSourceSchema(ctx context.Context) schema.Schema {
 						Description:         "Indicates the current operational state of the Mirror instance.",
 						MarkdownDescription: "Indicates the current operational state of the Mirror instance.",
 					},
-					"subinterfaces_4": schema.ListNestedAttribute{
+					"subinterfaces": schema.ListNestedAttribute{
 						NestedObject: schema.NestedAttributeObject{
 							Attributes: map[string]schema.Attribute{
 								"configured_source": schema.StringAttribute{
@@ -2658,7 +2658,7 @@ func (t SourcesType) ValueFromObject(ctx context.Context, in basetypes.ObjectVal
 			fmt.Sprintf(`interfaces expected to be basetypes.ObjectValue, was: %T`, interfacesAttribute))
 	}
 
-	subinterfaces2Attribute, ok := attributes["subinterfaces_2"]
+	subinterfaces2Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -2806,7 +2806,7 @@ func NewSourcesValue(attributeTypes map[string]attr.Type, attributes map[string]
 			fmt.Sprintf(`interfaces expected to be basetypes.ObjectValue, was: %T`, interfacesAttribute))
 	}
 
-	subinterfaces2Attribute, ok := attributes["subinterfaces_2"]
+	subinterfaces2Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -2908,7 +2908,7 @@ type SourcesValue struct {
 	Direction      basetypes.StringValue `tfsdk:"direction"`
 	Filters        basetypes.ListValue   `tfsdk:"filters"`
 	Interfaces     basetypes.ObjectValue `tfsdk:"interfaces"`
-	Subinterfaces2 basetypes.ObjectValue `tfsdk:"subinterfaces_2"`
+	Subinterfaces2 basetypes.ObjectValue `tfsdk:"subinterfaces"`
 	state          attr.ValueState
 }
 
@@ -2925,7 +2925,7 @@ func (v SourcesValue) ToTerraformValue(ctx context.Context) (tftypes.Value, erro
 	attrTypes["interfaces"] = basetypes.ObjectType{
 		AttrTypes: InterfacesValue{}.AttributeTypes(ctx),
 	}.TerraformType(ctx)
-	attrTypes["subinterfaces_2"] = basetypes.ObjectType{
+	attrTypes["subinterfaces"] = basetypes.ObjectType{
 		AttrTypes: Subinterfaces2Value{}.AttributeTypes(ctx),
 	}.TerraformType(ctx)
 
@@ -2965,7 +2965,7 @@ func (v SourcesValue) ToTerraformValue(ctx context.Context) (tftypes.Value, erro
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
 		}
 
-		vals["subinterfaces_2"] = val
+		vals["subinterfaces"] = val
 
 		if err := tftypes.ValidateValue(objectType, vals); err != nil {
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
@@ -3075,7 +3075,7 @@ func (v SourcesValue) ToObjectValue(ctx context.Context) (basetypes.ObjectValue,
 		"interfaces": basetypes.ObjectType{
 			AttrTypes: InterfacesValue{}.AttributeTypes(ctx),
 		},
-		"subinterfaces_2": basetypes.ObjectType{
+		"subinterfaces": basetypes.ObjectType{
 			AttrTypes: Subinterfaces2Value{}.AttributeTypes(ctx),
 		},
 	}
@@ -3091,10 +3091,10 @@ func (v SourcesValue) ToObjectValue(ctx context.Context) (basetypes.ObjectValue,
 	objVal, diags := types.ObjectValue(
 		attributeTypes,
 		map[string]attr.Value{
-			"direction":       v.Direction,
-			"filters":         filters,
-			"interfaces":      interfaces,
-			"subinterfaces_2": subinterfaces2,
+			"direction":     v.Direction,
+			"filters":       filters,
+			"interfaces":    interfaces,
+			"subinterfaces": subinterfaces2,
 		})
 
 	return objVal, diags
@@ -3151,7 +3151,7 @@ func (v SourcesValue) AttributeTypes(ctx context.Context) map[string]attr.Type {
 		"interfaces": basetypes.ObjectType{
 			AttrTypes: InterfacesValue{}.AttributeTypes(ctx),
 		},
-		"subinterfaces_2": basetypes.ObjectType{
+		"subinterfaces": basetypes.ObjectType{
 			AttrTypes: Subinterfaces2Value{}.AttributeTypes(ctx),
 		},
 	}
@@ -6496,7 +6496,7 @@ func (t SubinterfacesType) ValueFromObject(ctx context.Context, in basetypes.Obj
 			fmt.Sprintf(`bridge_interfaces expected to be basetypes.ListValue, was: %T`, bridgeInterfacesAttribute))
 	}
 
-	subinterfaces1Attribute, ok := attributes["subinterfaces_1"]
+	subinterfaces1Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -6625,7 +6625,7 @@ func NewSubinterfacesValue(attributeTypes map[string]attr.Type, attributes map[s
 			fmt.Sprintf(`bridge_interfaces expected to be basetypes.ListValue, was: %T`, bridgeInterfacesAttribute))
 	}
 
-	subinterfaces1Attribute, ok := attributes["subinterfaces_1"]
+	subinterfaces1Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -6742,7 +6742,7 @@ var _ basetypes.ObjectValuable = SubinterfacesValue{}
 
 type SubinterfacesValue struct {
 	BridgeInterfaces basetypes.ListValue `tfsdk:"bridge_interfaces"`
-	Subinterfaces1   basetypes.ListValue `tfsdk:"subinterfaces_1"`
+	Subinterfaces1   basetypes.ListValue `tfsdk:"subinterfaces"`
 	Vlans            basetypes.ListValue `tfsdk:"vlans"`
 	state            attr.ValueState
 }
@@ -6756,7 +6756,7 @@ func (v SubinterfacesValue) ToTerraformValue(ctx context.Context) (tftypes.Value
 	attrTypes["bridge_interfaces"] = basetypes.ListType{
 		ElemType: types.StringType,
 	}.TerraformType(ctx)
-	attrTypes["subinterfaces_1"] = basetypes.ListType{
+	attrTypes["subinterfaces"] = basetypes.ListType{
 		ElemType: Subinterfaces1Value{}.Type(ctx),
 	}.TerraformType(ctx)
 	attrTypes["vlans"] = basetypes.ListType{
@@ -6783,7 +6783,7 @@ func (v SubinterfacesValue) ToTerraformValue(ctx context.Context) (tftypes.Value
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
 		}
 
-		vals["subinterfaces_1"] = val
+		vals["subinterfaces"] = val
 
 		val, err = v.Vlans.ToTerraformValue(ctx)
 
@@ -6868,7 +6868,7 @@ func (v SubinterfacesValue) ToObjectValue(ctx context.Context) (basetypes.Object
 			"bridge_interfaces": basetypes.ListType{
 				ElemType: types.StringType,
 			},
-			"subinterfaces_1": basetypes.ListType{
+			"subinterfaces": basetypes.ListType{
 				ElemType: Subinterfaces1Value{}.Type(ctx),
 			},
 			"vlans": basetypes.ListType{
@@ -6894,7 +6894,7 @@ func (v SubinterfacesValue) ToObjectValue(ctx context.Context) (basetypes.Object
 			"bridge_interfaces": basetypes.ListType{
 				ElemType: types.StringType,
 			},
-			"subinterfaces_1": basetypes.ListType{
+			"subinterfaces": basetypes.ListType{
 				ElemType: Subinterfaces1Value{}.Type(ctx),
 			},
 			"vlans": basetypes.ListType{
@@ -6907,7 +6907,7 @@ func (v SubinterfacesValue) ToObjectValue(ctx context.Context) (basetypes.Object
 		"bridge_interfaces": basetypes.ListType{
 			ElemType: types.StringType,
 		},
-		"subinterfaces_1": basetypes.ListType{
+		"subinterfaces": basetypes.ListType{
 			ElemType: Subinterfaces1Value{}.Type(ctx),
 		},
 		"vlans": basetypes.ListType{
@@ -6927,7 +6927,7 @@ func (v SubinterfacesValue) ToObjectValue(ctx context.Context) (basetypes.Object
 		attributeTypes,
 		map[string]attr.Value{
 			"bridge_interfaces": bridgeInterfacesVal,
-			"subinterfaces_1":   subinterfaces1,
+			"subinterfaces":     subinterfaces1,
 			"vlans":             vlansVal,
 		})
 
@@ -6977,7 +6977,7 @@ func (v SubinterfacesValue) AttributeTypes(ctx context.Context) map[string]attr.
 		"bridge_interfaces": basetypes.ListType{
 			ElemType: types.StringType,
 		},
-		"subinterfaces_1": basetypes.ListType{
+		"subinterfaces": basetypes.ListType{
 			ElemType: Subinterfaces1Value{}.Type(ctx),
 		},
 		"vlans": basetypes.ListType{
@@ -7900,7 +7900,7 @@ func (t Subinterfaces2Type) ValueFromObject(ctx context.Context, in basetypes.Ob
 			fmt.Sprintf(`bridge_interfaces expected to be basetypes.ListValue, was: %T`, bridgeInterfacesAttribute))
 	}
 
-	subinterfaces3Attribute, ok := attributes["subinterfaces_3"]
+	subinterfaces3Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -8029,7 +8029,7 @@ func NewSubinterfaces2Value(attributeTypes map[string]attr.Type, attributes map[
 			fmt.Sprintf(`bridge_interfaces expected to be basetypes.ListValue, was: %T`, bridgeInterfacesAttribute))
 	}
 
-	subinterfaces3Attribute, ok := attributes["subinterfaces_3"]
+	subinterfaces3Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -8146,7 +8146,7 @@ var _ basetypes.ObjectValuable = Subinterfaces2Value{}
 
 type Subinterfaces2Value struct {
 	BridgeInterfaces basetypes.ListValue `tfsdk:"bridge_interfaces"`
-	Subinterfaces3   basetypes.ListValue `tfsdk:"subinterfaces_3"`
+	Subinterfaces3   basetypes.ListValue `tfsdk:"subinterfaces"`
 	Vlans            basetypes.ListValue `tfsdk:"vlans"`
 	state            attr.ValueState
 }
@@ -8160,7 +8160,7 @@ func (v Subinterfaces2Value) ToTerraformValue(ctx context.Context) (tftypes.Valu
 	attrTypes["bridge_interfaces"] = basetypes.ListType{
 		ElemType: types.StringType,
 	}.TerraformType(ctx)
-	attrTypes["subinterfaces_3"] = basetypes.ListType{
+	attrTypes["subinterfaces"] = basetypes.ListType{
 		ElemType: Subinterfaces3Value{}.Type(ctx),
 	}.TerraformType(ctx)
 	attrTypes["vlans"] = basetypes.ListType{
@@ -8187,7 +8187,7 @@ func (v Subinterfaces2Value) ToTerraformValue(ctx context.Context) (tftypes.Valu
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
 		}
 
-		vals["subinterfaces_3"] = val
+		vals["subinterfaces"] = val
 
 		val, err = v.Vlans.ToTerraformValue(ctx)
 
@@ -8272,7 +8272,7 @@ func (v Subinterfaces2Value) ToObjectValue(ctx context.Context) (basetypes.Objec
 			"bridge_interfaces": basetypes.ListType{
 				ElemType: types.StringType,
 			},
-			"subinterfaces_3": basetypes.ListType{
+			"subinterfaces": basetypes.ListType{
 				ElemType: Subinterfaces3Value{}.Type(ctx),
 			},
 			"vlans": basetypes.ListType{
@@ -8298,7 +8298,7 @@ func (v Subinterfaces2Value) ToObjectValue(ctx context.Context) (basetypes.Objec
 			"bridge_interfaces": basetypes.ListType{
 				ElemType: types.StringType,
 			},
-			"subinterfaces_3": basetypes.ListType{
+			"subinterfaces": basetypes.ListType{
 				ElemType: Subinterfaces3Value{}.Type(ctx),
 			},
 			"vlans": basetypes.ListType{
@@ -8311,7 +8311,7 @@ func (v Subinterfaces2Value) ToObjectValue(ctx context.Context) (basetypes.Objec
 		"bridge_interfaces": basetypes.ListType{
 			ElemType: types.StringType,
 		},
-		"subinterfaces_3": basetypes.ListType{
+		"subinterfaces": basetypes.ListType{
 			ElemType: Subinterfaces3Value{}.Type(ctx),
 		},
 		"vlans": basetypes.ListType{
@@ -8331,7 +8331,7 @@ func (v Subinterfaces2Value) ToObjectValue(ctx context.Context) (basetypes.Objec
 		attributeTypes,
 		map[string]attr.Value{
 			"bridge_interfaces": bridgeInterfacesVal,
-			"subinterfaces_3":   subinterfaces3,
+			"subinterfaces":     subinterfaces3,
 			"vlans":             vlansVal,
 		})
 
@@ -8381,7 +8381,7 @@ func (v Subinterfaces2Value) AttributeTypes(ctx context.Context) map[string]attr
 		"bridge_interfaces": basetypes.ListType{
 			ElemType: types.StringType,
 		},
-		"subinterfaces_3": basetypes.ListType{
+		"subinterfaces": basetypes.ListType{
 			ElemType: Subinterfaces3Value{}.Type(ctx),
 		},
 		"vlans": basetypes.ListType{
@@ -8921,58 +8921,58 @@ func (t StatusType) ValueFromObject(ctx context.Context, in basetypes.ObjectValu
 			fmt.Sprintf(`num_active_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveSubinterfacesAttribute))
 	}
 
-	numActiveV4filterSubinterfacesAttribute, ok := attributes["num_active_v4filter_subinterfaces"]
+	numActiveV4FilterSubinterfacesAttribute, ok := attributes["num_active_v4_filter_subinterfaces"]
 
 	if !ok {
 		diags.AddError(
 			"Attribute Missing",
-			`num_active_v4filter_subinterfaces is missing from object`)
+			`num_active_v4_filter_subinterfaces is missing from object`)
 
 		return nil, diags
 	}
 
-	numActiveV4filterSubinterfacesVal, ok := numActiveV4filterSubinterfacesAttribute.(basetypes.Int64Value)
+	numActiveV4FilterSubinterfacesVal, ok := numActiveV4FilterSubinterfacesAttribute.(basetypes.Int64Value)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`num_active_v4filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV4filterSubinterfacesAttribute))
+			fmt.Sprintf(`num_active_v4_filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV4FilterSubinterfacesAttribute))
 	}
 
-	numActiveV6filterSubinterfacesAttribute, ok := attributes["num_active_v6filter_subinterfaces"]
+	numActiveV6FilterSubinterfacesAttribute, ok := attributes["num_active_v6_filter_subinterfaces"]
 
 	if !ok {
 		diags.AddError(
 			"Attribute Missing",
-			`num_active_v6filter_subinterfaces is missing from object`)
+			`num_active_v6_filter_subinterfaces is missing from object`)
 
 		return nil, diags
 	}
 
-	numActiveV6filterSubinterfacesVal, ok := numActiveV6filterSubinterfacesAttribute.(basetypes.Int64Value)
+	numActiveV6FilterSubinterfacesVal, ok := numActiveV6FilterSubinterfacesAttribute.(basetypes.Int64Value)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`num_active_v6filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV6filterSubinterfacesAttribute))
+			fmt.Sprintf(`num_active_v6_filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV6FilterSubinterfacesAttribute))
 	}
 
-	numActiveVlansubinterfacesAttribute, ok := attributes["num_active_vlansubinterfaces"]
+	numActiveVlanSubinterfacesAttribute, ok := attributes["num_active_vlan_subinterfaces"]
 
 	if !ok {
 		diags.AddError(
 			"Attribute Missing",
-			`num_active_vlansubinterfaces is missing from object`)
+			`num_active_vlan_subinterfaces is missing from object`)
 
 		return nil, diags
 	}
 
-	numActiveVlansubinterfacesVal, ok := numActiveVlansubinterfacesAttribute.(basetypes.Int64Value)
+	numActiveVlanSubinterfacesVal, ok := numActiveVlanSubinterfacesAttribute.(basetypes.Int64Value)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`num_active_vlansubinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveVlansubinterfacesAttribute))
+			fmt.Sprintf(`num_active_vlan_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveVlanSubinterfacesAttribute))
 	}
 
 	numberActiveBridgeInterfacesAttribute, ok := attributes["number_active_bridge_interfaces"]
@@ -9011,7 +9011,7 @@ func (t StatusType) ValueFromObject(ctx context.Context, in basetypes.ObjectValu
 			fmt.Sprintf(`operational_state expected to be basetypes.StringValue, was: %T`, operationalStateAttribute))
 	}
 
-	subinterfaces4Attribute, ok := attributes["subinterfaces_4"]
+	subinterfaces4Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -9038,9 +9038,9 @@ func (t StatusType) ValueFromObject(ctx context.Context, in basetypes.ObjectValu
 		MirrorId:                       mirrorIdVal,
 		NumActiveInterfaces:            numActiveInterfacesVal,
 		NumActiveSubinterfaces:         numActiveSubinterfacesVal,
-		NumActiveV4filterSubinterfaces: numActiveV4filterSubinterfacesVal,
-		NumActiveV6filterSubinterfaces: numActiveV6filterSubinterfacesVal,
-		NumActiveVlansubinterfaces:     numActiveVlansubinterfacesVal,
+		NumActiveV4FilterSubinterfaces: numActiveV4FilterSubinterfacesVal,
+		NumActiveV6FilterSubinterfaces: numActiveV6FilterSubinterfacesVal,
+		NumActiveVlanSubinterfaces:     numActiveVlanSubinterfacesVal,
 		NumberActiveBridgeInterfaces:   numberActiveBridgeInterfacesVal,
 		OperationalState:               operationalStateVal,
 		Subinterfaces4:                 subinterfaces4Val,
@@ -9183,58 +9183,58 @@ func NewStatusValue(attributeTypes map[string]attr.Type, attributes map[string]a
 			fmt.Sprintf(`num_active_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveSubinterfacesAttribute))
 	}
 
-	numActiveV4filterSubinterfacesAttribute, ok := attributes["num_active_v4filter_subinterfaces"]
+	numActiveV4FilterSubinterfacesAttribute, ok := attributes["num_active_v4_filter_subinterfaces"]
 
 	if !ok {
 		diags.AddError(
 			"Attribute Missing",
-			`num_active_v4filter_subinterfaces is missing from object`)
+			`num_active_v4_filter_subinterfaces is missing from object`)
 
 		return NewStatusValueUnknown(), diags
 	}
 
-	numActiveV4filterSubinterfacesVal, ok := numActiveV4filterSubinterfacesAttribute.(basetypes.Int64Value)
+	numActiveV4FilterSubinterfacesVal, ok := numActiveV4FilterSubinterfacesAttribute.(basetypes.Int64Value)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`num_active_v4filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV4filterSubinterfacesAttribute))
+			fmt.Sprintf(`num_active_v4_filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV4FilterSubinterfacesAttribute))
 	}
 
-	numActiveV6filterSubinterfacesAttribute, ok := attributes["num_active_v6filter_subinterfaces"]
+	numActiveV6FilterSubinterfacesAttribute, ok := attributes["num_active_v6_filter_subinterfaces"]
 
 	if !ok {
 		diags.AddError(
 			"Attribute Missing",
-			`num_active_v6filter_subinterfaces is missing from object`)
+			`num_active_v6_filter_subinterfaces is missing from object`)
 
 		return NewStatusValueUnknown(), diags
 	}
 
-	numActiveV6filterSubinterfacesVal, ok := numActiveV6filterSubinterfacesAttribute.(basetypes.Int64Value)
+	numActiveV6FilterSubinterfacesVal, ok := numActiveV6FilterSubinterfacesAttribute.(basetypes.Int64Value)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`num_active_v6filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV6filterSubinterfacesAttribute))
+			fmt.Sprintf(`num_active_v6_filter_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveV6FilterSubinterfacesAttribute))
 	}
 
-	numActiveVlansubinterfacesAttribute, ok := attributes["num_active_vlansubinterfaces"]
+	numActiveVlanSubinterfacesAttribute, ok := attributes["num_active_vlan_subinterfaces"]
 
 	if !ok {
 		diags.AddError(
 			"Attribute Missing",
-			`num_active_vlansubinterfaces is missing from object`)
+			`num_active_vlan_subinterfaces is missing from object`)
 
 		return NewStatusValueUnknown(), diags
 	}
 
-	numActiveVlansubinterfacesVal, ok := numActiveVlansubinterfacesAttribute.(basetypes.Int64Value)
+	numActiveVlanSubinterfacesVal, ok := numActiveVlanSubinterfacesAttribute.(basetypes.Int64Value)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`num_active_vlansubinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveVlansubinterfacesAttribute))
+			fmt.Sprintf(`num_active_vlan_subinterfaces expected to be basetypes.Int64Value, was: %T`, numActiveVlanSubinterfacesAttribute))
 	}
 
 	numberActiveBridgeInterfacesAttribute, ok := attributes["number_active_bridge_interfaces"]
@@ -9273,7 +9273,7 @@ func NewStatusValue(attributeTypes map[string]attr.Type, attributes map[string]a
 			fmt.Sprintf(`operational_state expected to be basetypes.StringValue, was: %T`, operationalStateAttribute))
 	}
 
-	subinterfaces4Attribute, ok := attributes["subinterfaces_4"]
+	subinterfaces4Attribute, ok := attributes["subinterfaces"]
 
 	if !ok {
 		diags.AddError(
@@ -9300,9 +9300,9 @@ func NewStatusValue(attributeTypes map[string]attr.Type, attributes map[string]a
 		MirrorId:                       mirrorIdVal,
 		NumActiveInterfaces:            numActiveInterfacesVal,
 		NumActiveSubinterfaces:         numActiveSubinterfacesVal,
-		NumActiveV4filterSubinterfaces: numActiveV4filterSubinterfacesVal,
-		NumActiveV6filterSubinterfaces: numActiveV6filterSubinterfacesVal,
-		NumActiveVlansubinterfaces:     numActiveVlansubinterfacesVal,
+		NumActiveV4FilterSubinterfaces: numActiveV4FilterSubinterfacesVal,
+		NumActiveV6FilterSubinterfaces: numActiveV6FilterSubinterfacesVal,
+		NumActiveVlanSubinterfaces:     numActiveVlanSubinterfacesVal,
 		NumberActiveBridgeInterfaces:   numberActiveBridgeInterfacesVal,
 		OperationalState:               operationalStateVal,
 		Subinterfaces4:                 subinterfaces4Val,
@@ -9382,12 +9382,12 @@ type StatusValue struct {
 	MirrorId                       basetypes.StringValue `tfsdk:"mirror_id"`
 	NumActiveInterfaces            basetypes.Int64Value  `tfsdk:"num_active_interfaces"`
 	NumActiveSubinterfaces         basetypes.Int64Value  `tfsdk:"num_active_subinterfaces"`
-	NumActiveV4filterSubinterfaces basetypes.Int64Value  `tfsdk:"num_active_v4filter_subinterfaces"`
-	NumActiveV6filterSubinterfaces basetypes.Int64Value  `tfsdk:"num_active_v6filter_subinterfaces"`
-	NumActiveVlansubinterfaces     basetypes.Int64Value  `tfsdk:"num_active_vlansubinterfaces"`
+	NumActiveV4FilterSubinterfaces basetypes.Int64Value  `tfsdk:"num_active_v4_filter_subinterfaces"`
+	NumActiveV6FilterSubinterfaces basetypes.Int64Value  `tfsdk:"num_active_v6_filter_subinterfaces"`
+	NumActiveVlanSubinterfaces     basetypes.Int64Value  `tfsdk:"num_active_vlan_subinterfaces"`
 	NumberActiveBridgeInterfaces   basetypes.Int64Value  `tfsdk:"number_active_bridge_interfaces"`
 	OperationalState               basetypes.StringValue `tfsdk:"operational_state"`
-	Subinterfaces4                 basetypes.ListValue   `tfsdk:"subinterfaces_4"`
+	Subinterfaces4                 basetypes.ListValue   `tfsdk:"subinterfaces"`
 	state                          attr.ValueState
 }
 
@@ -9401,12 +9401,12 @@ func (v StatusValue) ToTerraformValue(ctx context.Context) (tftypes.Value, error
 	attrTypes["mirror_id"] = basetypes.StringType{}.TerraformType(ctx)
 	attrTypes["num_active_interfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
 	attrTypes["num_active_subinterfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
-	attrTypes["num_active_v4filter_subinterfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
-	attrTypes["num_active_v6filter_subinterfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
-	attrTypes["num_active_vlansubinterfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
+	attrTypes["num_active_v4_filter_subinterfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
+	attrTypes["num_active_v6_filter_subinterfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
+	attrTypes["num_active_vlan_subinterfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
 	attrTypes["number_active_bridge_interfaces"] = basetypes.Int64Type{}.TerraformType(ctx)
 	attrTypes["operational_state"] = basetypes.StringType{}.TerraformType(ctx)
-	attrTypes["subinterfaces_4"] = basetypes.ListType{
+	attrTypes["subinterfaces"] = basetypes.ListType{
 		ElemType: Subinterfaces4Value{}.Type(ctx),
 	}.TerraformType(ctx)
 
@@ -9448,29 +9448,29 @@ func (v StatusValue) ToTerraformValue(ctx context.Context) (tftypes.Value, error
 
 		vals["num_active_subinterfaces"] = val
 
-		val, err = v.NumActiveV4filterSubinterfaces.ToTerraformValue(ctx)
+		val, err = v.NumActiveV4FilterSubinterfaces.ToTerraformValue(ctx)
 
 		if err != nil {
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
 		}
 
-		vals["num_active_v4filter_subinterfaces"] = val
+		vals["num_active_v4_filter_subinterfaces"] = val
 
-		val, err = v.NumActiveV6filterSubinterfaces.ToTerraformValue(ctx)
-
-		if err != nil {
-			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
-		}
-
-		vals["num_active_v6filter_subinterfaces"] = val
-
-		val, err = v.NumActiveVlansubinterfaces.ToTerraformValue(ctx)
+		val, err = v.NumActiveV6FilterSubinterfaces.ToTerraformValue(ctx)
 
 		if err != nil {
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
 		}
 
-		vals["num_active_vlansubinterfaces"] = val
+		vals["num_active_v6_filter_subinterfaces"] = val
+
+		val, err = v.NumActiveVlanSubinterfaces.ToTerraformValue(ctx)
+
+		if err != nil {
+			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
+		}
+
+		vals["num_active_vlan_subinterfaces"] = val
 
 		val, err = v.NumberActiveBridgeInterfaces.ToTerraformValue(ctx)
 
@@ -9494,7 +9494,7 @@ func (v StatusValue) ToTerraformValue(ctx context.Context) (tftypes.Value, error
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
 		}
 
-		vals["subinterfaces_4"] = val
+		vals["subinterfaces"] = val
 
 		if err := tftypes.ValidateValue(objectType, vals); err != nil {
 			return tftypes.NewValue(objectType, tftypes.UnknownValue), err
@@ -9555,16 +9555,16 @@ func (v StatusValue) ToObjectValue(ctx context.Context) (basetypes.ObjectValue, 
 	}
 
 	attributeTypes := map[string]attr.Type{
-		"last_change":                       basetypes.StringType{},
-		"mirror_id":                         basetypes.StringType{},
-		"num_active_interfaces":             basetypes.Int64Type{},
-		"num_active_subinterfaces":          basetypes.Int64Type{},
-		"num_active_v4filter_subinterfaces": basetypes.Int64Type{},
-		"num_active_v6filter_subinterfaces": basetypes.Int64Type{},
-		"num_active_vlansubinterfaces":      basetypes.Int64Type{},
-		"number_active_bridge_interfaces":   basetypes.Int64Type{},
-		"operational_state":                 basetypes.StringType{},
-		"subinterfaces_4": basetypes.ListType{
+		"last_change":                        basetypes.StringType{},
+		"mirror_id":                          basetypes.StringType{},
+		"num_active_interfaces":              basetypes.Int64Type{},
+		"num_active_subinterfaces":           basetypes.Int64Type{},
+		"num_active_v4_filter_subinterfaces": basetypes.Int64Type{},
+		"num_active_v6_filter_subinterfaces": basetypes.Int64Type{},
+		"num_active_vlan_subinterfaces":      basetypes.Int64Type{},
+		"number_active_bridge_interfaces":    basetypes.Int64Type{},
+		"operational_state":                  basetypes.StringType{},
+		"subinterfaces": basetypes.ListType{
 			ElemType: Subinterfaces4Value{}.Type(ctx),
 		},
 	}
@@ -9580,16 +9580,16 @@ func (v StatusValue) ToObjectValue(ctx context.Context) (basetypes.ObjectValue, 
 	objVal, diags := types.ObjectValue(
 		attributeTypes,
 		map[string]attr.Value{
-			"last_change":                       v.LastChange,
-			"mirror_id":                         v.MirrorId,
-			"num_active_interfaces":             v.NumActiveInterfaces,
-			"num_active_subinterfaces":          v.NumActiveSubinterfaces,
-			"num_active_v4filter_subinterfaces": v.NumActiveV4filterSubinterfaces,
-			"num_active_v6filter_subinterfaces": v.NumActiveV6filterSubinterfaces,
-			"num_active_vlansubinterfaces":      v.NumActiveVlansubinterfaces,
-			"number_active_bridge_interfaces":   v.NumberActiveBridgeInterfaces,
-			"operational_state":                 v.OperationalState,
-			"subinterfaces_4":                   subinterfaces4,
+			"last_change":                        v.LastChange,
+			"mirror_id":                          v.MirrorId,
+			"num_active_interfaces":              v.NumActiveInterfaces,
+			"num_active_subinterfaces":           v.NumActiveSubinterfaces,
+			"num_active_v4_filter_subinterfaces": v.NumActiveV4FilterSubinterfaces,
+			"num_active_v6_filter_subinterfaces": v.NumActiveV6FilterSubinterfaces,
+			"num_active_vlan_subinterfaces":      v.NumActiveVlanSubinterfaces,
+			"number_active_bridge_interfaces":    v.NumberActiveBridgeInterfaces,
+			"operational_state":                  v.OperationalState,
+			"subinterfaces":                      subinterfaces4,
 		})
 
 	return objVal, diags
@@ -9626,15 +9626,15 @@ func (v StatusValue) Equal(o attr.Value) bool {
 		return false
 	}
 
-	if !v.NumActiveV4filterSubinterfaces.Equal(other.NumActiveV4filterSubinterfaces) {
+	if !v.NumActiveV4FilterSubinterfaces.Equal(other.NumActiveV4FilterSubinterfaces) {
 		return false
 	}
 
-	if !v.NumActiveV6filterSubinterfaces.Equal(other.NumActiveV6filterSubinterfaces) {
+	if !v.NumActiveV6FilterSubinterfaces.Equal(other.NumActiveV6FilterSubinterfaces) {
 		return false
 	}
 
-	if !v.NumActiveVlansubinterfaces.Equal(other.NumActiveVlansubinterfaces) {
+	if !v.NumActiveVlanSubinterfaces.Equal(other.NumActiveVlanSubinterfaces) {
 		return false
 	}
 
@@ -9663,16 +9663,16 @@ func (v StatusValue) Type(ctx context.Context) attr.Type {
 
 func (v StatusValue) AttributeTypes(ctx context.Context) map[string]attr.Type {
 	return map[string]attr.Type{
-		"last_change":                       basetypes.StringType{},
-		"mirror_id":                         basetypes.StringType{},
-		"num_active_interfaces":             basetypes.Int64Type{},
-		"num_active_subinterfaces":          basetypes.Int64Type{},
-		"num_active_v4filter_subinterfaces": basetypes.Int64Type{},
-		"num_active_v6filter_subinterfaces": basetypes.Int64Type{},
-		"num_active_vlansubinterfaces":      basetypes.Int64Type{},
-		"number_active_bridge_interfaces":   basetypes.Int64Type{},
-		"operational_state":                 basetypes.StringType{},
-		"subinterfaces_4": basetypes.ListType{
+		"last_change":                        basetypes.StringType{},
+		"mirror_id":                          basetypes.StringType{},
+		"num_active_interfaces":              basetypes.Int64Type{},
+		"num_active_subinterfaces":           basetypes.Int64Type{},
+		"num_active_v4_filter_subinterfaces": basetypes.Int64Type{},
+		"num_active_v6_filter_subinterfaces": basetypes.Int64Type{},
+		"num_active_vlan_subinterfaces":      basetypes.Int64Type{},
+		"number_active_bridge_interfaces":    basetypes.Int64Type{},
+		"operational_state":                  basetypes.StringType{},
+		"subinterfaces": basetypes.ListType{
 			ElemType: Subinterfaces4Value{}.Type(ctx),
 		},
 	}

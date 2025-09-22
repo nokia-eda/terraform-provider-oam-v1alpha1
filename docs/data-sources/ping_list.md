@@ -23,7 +23,7 @@ description: |-
 
 - `fields` (String) a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched.
 - `filter` (String) an EQL "where" expression that will be used to filter the set of resources returned.
-- `labelselector` (String) a label selector string to filter the results based on CR labels
+- `label_selector` (String) a label selector string to filter the results based on CR labels
 
 ### Read-Only
 
@@ -93,14 +93,14 @@ It can be one of the following values:
 
 Read-Only:
 
-- `details_1` (Attributes) Details of the ping result, if available. (see [below for nested schema](#nestedatt--items--status--details--details_1))
+- `details` (Attributes) Details of the ping result, if available. (see [below for nested schema](#nestedatt--items--status--details--details))
 - `error` (String) Error message, if the ping failed.
 - `network_instance` (String) Network instance used to source the ping from.
 - `node` (String) Node the ping was sourced from.
 - `success` (Boolean) Indicates if the ping was successful.
 
-<a id="nestedatt--items--status--details--details_1"></a>
-### Nested Schema for `items.status.details.details_1`
+<a id="nestedatt--items--status--details--details"></a>
+### Nested Schema for `items.status.details.details`
 
 Read-Only:
 
