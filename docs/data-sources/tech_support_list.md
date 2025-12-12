@@ -24,6 +24,7 @@ description: |-
 - `fields` (String) a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched.
 - `filter` (String) an EQL "where" expression that will be used to filter the set of resources returned.
 - `label_selector` (String) a label selector string to filter the results based on CR labels
+- `labelselector` (String) Deprecated: a label selector string to filter the results based on CR labels
 
 ### Read-Only
 
@@ -36,11 +37,13 @@ description: |-
 
 Optional:
 
-- `spec` (Attributes) Generate technical support packages for a node or set of nodes. (see [below for nested schema](#nestedatt--items--spec))
+- `spec` (Attributes) Generate technical support packages for a node or set of nodes - should only do this if explicitly requested by the user. (see [below for nested schema](#nestedatt--items--spec))
 
 Read-Only:
 
+- `alarms` (Attributes) (see [below for nested schema](#nestedatt--items--alarms))
 - `api_version` (String)
+- `deviations` (Attributes) (see [below for nested schema](#nestedatt--items--deviations))
 - `kind` (String)
 - `metadata` (Attributes) (see [below for nested schema](#nestedatt--items--metadata))
 - `status` (Attributes) Result of the technical support package generation. (see [below for nested schema](#nestedatt--items--status))
@@ -55,6 +58,25 @@ This matches labels on TopoNode resources.
 If no nodes are specified, and no node selectors are specified, all nodes in the given namespace will be selected.
 This is a list of label expressions, e.g. ["eda.nokia.com/role=leaf"].
 - `nodes` (List of String) List of nodes to generate and collect technical support packages for.
+
+
+<a id="nestedatt--items--alarms"></a>
+### Nested Schema for `items.alarms`
+
+Read-Only:
+
+- `critical` (Number)
+- `major` (Number)
+- `minor` (Number)
+- `warning` (Number)
+
+
+<a id="nestedatt--items--deviations"></a>
+### Nested Schema for `items.deviations`
+
+Read-Only:
+
+- `count` (Number)
 
 
 <a id="nestedatt--items--metadata"></a>
@@ -73,5 +95,6 @@ Read-Only:
 
 Read-Only:
 
-- `id` (Number) Id
+- `failed_nodes` (List of String) List of nodes failed to produce tech-support, it is populated in case of PartialSuccess
+Items in the list should be the names of the nodes, where tech-support failed
 - `result` (String) Result

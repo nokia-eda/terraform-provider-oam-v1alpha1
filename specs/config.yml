@@ -72,6 +72,28 @@ resources:
       path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
       method: DELETE
 
+  ping:
+    create:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings
+      method: POST
+    read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings/{name}
+      method: GET
+    delete:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/pings/{name}
+      method: DELETE
+
+  tech_support:
+    create:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports
+      method: POST
+    read:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports/{name}
+      method: GET
+    delete:
+      path: /workflows/v1/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/techsupports/{name}
+      method: DELETE
+
   threshold:
     create:
       path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds

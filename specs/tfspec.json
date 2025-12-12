@@ -93,9 +93,55 @@
                         }
                     },
                     {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "name": "api_version",
                         "string": {
                             "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
@@ -294,6 +340,16 @@
                                                                                                         "string": {
                                                                                                             "computed_optional_required": "optional",
                                                                                                             "description": "Destination prefix to match."
+                                                                                                        }
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "name": "dscp",
+                                                                                                        "list": {
+                                                                                                            "computed_optional_required": "optional",
+                                                                                                            "element_type": {
+                                                                                                                "int64": {}
+                                                                                                            },
+                                                                                                            "description": "Match DSCP values."
                                                                                                         }
                                                                                                     },
                                                                                                     {
@@ -776,6 +832,13 @@
                         }
                     },
                     {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "Deprecated: a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
                         "name": "namespace",
                         "string": {
                             "computed_optional_required": "required",
@@ -795,9 +858,55 @@
                             "nested_object": {
                                 "attributes": [
                                     {
+                                        "name": "alarms",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "critical",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "major",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "minor",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "warning",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
                                         "name": "api_version",
                                         "string": {
                                             "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "deviations",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "count",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -996,6 +1105,16 @@
                                                                                                                         "string": {
                                                                                                                             "computed_optional_required": "optional",
                                                                                                                             "description": "Destination prefix to match."
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "name": "dscp",
+                                                                                                                        "list": {
+                                                                                                                            "computed_optional_required": "optional",
+                                                                                                                            "element_type": {
+                                                                                                                                "int64": {}
+                                                                                                                            },
+                                                                                                                            "description": "Match DSCP values."
                                                                                                                         }
                                                                                                                     },
                                                                                                                     {
@@ -1481,9 +1600,55 @@
                         }
                     },
                     {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "name": "api_version",
                         "string": {
                             "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
@@ -1729,6 +1894,13 @@
                         }
                     },
                     {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "Deprecated: a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
                         "name": "namespace",
                         "string": {
                             "computed_optional_required": "required",
@@ -1748,9 +1920,55 @@
                             "nested_object": {
                                 "attributes": [
                                     {
+                                        "name": "alarms",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "critical",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "major",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "minor",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "warning",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
                                         "name": "api_version",
                                         "string": {
                                             "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "deviations",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "count",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -2070,9 +2288,55 @@
                         }
                     },
                     {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "name": "api_version",
                         "string": {
                             "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
@@ -2145,7 +2409,7 @@
                                     }
                                 }
                             ],
-                            "description": "Generate technical support packages for a node or set of nodes."
+                            "description": "Generate technical support packages for a node or set of nodes - should only do this if explicitly requested by the user."
                         }
                     },
                     {
@@ -2154,10 +2418,13 @@
                             "computed_optional_required": "computed",
                             "attributes": [
                                 {
-                                    "name": "id",
-                                    "int64": {
+                                    "name": "failed_nodes",
+                                    "list": {
                                         "computed_optional_required": "computed",
-                                        "description": "Id"
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of nodes failed to produce tech-support, it is populated in case of PartialSuccess\nItems in the list should be the names of the nodes, where tech-support failed"
                                     }
                                 },
                                 {
@@ -2200,6 +2467,13 @@
                         }
                     },
                     {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "Deprecated: a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
                         "name": "namespace",
                         "string": {
                             "computed_optional_required": "required",
@@ -2219,9 +2493,55 @@
                             "nested_object": {
                                 "attributes": [
                                     {
+                                        "name": "alarms",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "critical",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "major",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "minor",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "warning",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
                                         "name": "api_version",
                                         "string": {
                                             "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "deviations",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "count",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -2294,7 +2614,7 @@
                                                     }
                                                 }
                                             ],
-                                            "description": "Generate technical support packages for a node or set of nodes."
+                                            "description": "Generate technical support packages for a node or set of nodes - should only do this if explicitly requested by the user."
                                         }
                                     },
                                     {
@@ -2303,10 +2623,13 @@
                                             "computed_optional_required": "computed",
                                             "attributes": [
                                                 {
-                                                    "name": "id",
-                                                    "int64": {
+                                                    "name": "failed_nodes",
+                                                    "list": {
                                                         "computed_optional_required": "computed",
-                                                        "description": "Id"
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of nodes failed to produce tech-support, it is populated in case of PartialSuccess\nItems in the list should be the names of the nodes, where tech-support failed"
                                                     }
                                                 },
                                                 {
@@ -2359,9 +2682,55 @@
                         }
                     },
                     {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "name": "api_version",
                         "string": {
                             "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
@@ -2454,14 +2823,14 @@
                                     "name": "field",
                                     "string": {
                                         "computed_optional_required": "optional",
-                                        "description": "Field to monitor for this threshold, for example `utilization`."
+                                        "description": "Field to monitor for this threshold, for example `utilization`. Only a single field may be monitored per threshold. This field must be present in the table specified by the path.\nThe field specified should be an integer field that can be compared to the specified thresholds. Nested fields are supported, for example `utilization.value` would monitor the value field inside of the nested object with key `utilization`."
                                     }
                                 },
                                 {
                                     "name": "generate_overlay",
                                     "bool": {
                                         "computed_optional_required": "optional",
-                                        "description": "Enable or disable generation of a topology overlay for this threshold."
+                                        "description": "Enable or disable generation of a topology overlay for this threshold.\nThis functionality is only supported for paths in the .namespace.node table."
                                     }
                                 },
                                 {
@@ -2475,7 +2844,7 @@
                                     "name": "path",
                                     "string": {
                                         "computed_optional_required": "optional",
-                                        "description": "Path to monitor for this threshold. This should be the full EDB path to the table containing the field you wish to trigger a threshold on.\nFor example, to monitor the utilization field of the component volume table, you would use `.namespace.node.normal.components_eda_nokia_com.v1.controlmodule.volume`, and set field to `utilization`."
+                                        "description": "Path to monitor for this threshold. This should be the full EDB path (without keys) to the table containing the field you wish to trigger a threshold on.\nFor example, to monitor the utilization field of the component volume table, you would use `.namespace.node.normal.components_eda_nokia_com.v1.controlmodule.volume`, and set field to `utilization`."
                                     }
                                 },
                                 {
@@ -2487,25 +2856,25 @@
                                                 "name": "group",
                                                 "string": {
                                                     "computed_optional_required": "optional",
-                                                    "description": "The group of the resource to monitor."
+                                                    "description": "The group of the resource raise alarms against, should any thresholds be breached."
                                                 }
                                             },
                                             {
                                                 "name": "kind",
                                                 "string": {
                                                     "computed_optional_required": "optional",
-                                                    "description": "The kind of resource to monitor."
+                                                    "description": "The kind of resource to raise alarms against, should any thresholds be breached."
                                                 }
                                             },
                                             {
                                                 "name": "name",
                                                 "string": {
                                                     "computed_optional_required": "optional",
-                                                    "description": "The name of the resource to monitor."
+                                                    "description": "The name of the resource to raise alarms against, should any thresholds be breached."
                                                 }
                                             }
                                         ],
-                                        "description": "Which resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.\nBy default a resource will attempt to be derived based on the monitored path."
+                                        "description": "Manually assign a resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.\nBy default a resource will be raised against the threshold resource itself."
                                     }
                                 },
                                 {
@@ -2599,6 +2968,13 @@
                         }
                     },
                     {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "Deprecated: a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
                         "name": "namespace",
                         "string": {
                             "computed_optional_required": "required",
@@ -2618,9 +2994,55 @@
                             "nested_object": {
                                 "attributes": [
                                     {
+                                        "name": "alarms",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "critical",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "major",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "minor",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "warning",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
                                         "name": "api_version",
                                         "string": {
                                             "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "deviations",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "count",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -2713,14 +3135,14 @@
                                                     "name": "field",
                                                     "string": {
                                                         "computed_optional_required": "optional",
-                                                        "description": "Field to monitor for this threshold, for example `utilization`."
+                                                        "description": "Field to monitor for this threshold, for example `utilization`. Only a single field may be monitored per threshold. This field must be present in the table specified by the path.\nThe field specified should be an integer field that can be compared to the specified thresholds. Nested fields are supported, for example `utilization.value` would monitor the value field inside of the nested object with key `utilization`."
                                                     }
                                                 },
                                                 {
                                                     "name": "generate_overlay",
                                                     "bool": {
                                                         "computed_optional_required": "optional",
-                                                        "description": "Enable or disable generation of a topology overlay for this threshold."
+                                                        "description": "Enable or disable generation of a topology overlay for this threshold.\nThis functionality is only supported for paths in the .namespace.node table."
                                                     }
                                                 },
                                                 {
@@ -2734,7 +3156,7 @@
                                                     "name": "path",
                                                     "string": {
                                                         "computed_optional_required": "optional",
-                                                        "description": "Path to monitor for this threshold. This should be the full EDB path to the table containing the field you wish to trigger a threshold on.\nFor example, to monitor the utilization field of the component volume table, you would use `.namespace.node.normal.components_eda_nokia_com.v1.controlmodule.volume`, and set field to `utilization`."
+                                                        "description": "Path to monitor for this threshold. This should be the full EDB path (without keys) to the table containing the field you wish to trigger a threshold on.\nFor example, to monitor the utilization field of the component volume table, you would use `.namespace.node.normal.components_eda_nokia_com.v1.controlmodule.volume`, and set field to `utilization`."
                                                     }
                                                 },
                                                 {
@@ -2746,25 +3168,25 @@
                                                                 "name": "group",
                                                                 "string": {
                                                                     "computed_optional_required": "optional",
-                                                                    "description": "The group of the resource to monitor."
+                                                                    "description": "The group of the resource raise alarms against, should any thresholds be breached."
                                                                 }
                                                             },
                                                             {
                                                                 "name": "kind",
                                                                 "string": {
                                                                     "computed_optional_required": "optional",
-                                                                    "description": "The kind of resource to monitor."
+                                                                    "description": "The kind of resource to raise alarms against, should any thresholds be breached."
                                                                 }
                                                             },
                                                             {
                                                                 "name": "name",
                                                                 "string": {
                                                                     "computed_optional_required": "optional",
-                                                                    "description": "The name of the resource to monitor."
+                                                                    "description": "The name of the resource to raise alarms against, should any thresholds be breached."
                                                                 }
                                                             }
                                                         ],
-                                                        "description": "Which resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.\nBy default a resource will attempt to be derived based on the monitored path."
+                                                        "description": "Manually assign a resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.\nBy default a resource will be raised against the threshold resource itself."
                                                     }
                                                 },
                                                 {
@@ -2925,6 +3347,38 @@
             "schema": {
                 "attributes": [
                     {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "name": "api_version",
                         "string": {
                             "computed_optional_required": "computed_optional",
@@ -2943,6 +3397,20 @@
                                             }
                                         ],
                                         "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^oam\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
                                     }
                                 }
                             ]
@@ -3259,6 +3727,28 @@
                                                                                                         "string": {
                                                                                                             "computed_optional_required": "optional",
                                                                                                             "description": "Destination prefix to match."
+                                                                                                        }
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "name": "dscp",
+                                                                                                        "list": {
+                                                                                                            "computed_optional_required": "optional",
+                                                                                                            "element_type": {
+                                                                                                                "int64": {}
+                                                                                                            },
+                                                                                                            "description": "Match DSCP values.",
+                                                                                                            "validators": [
+                                                                                                                {
+                                                                                                                    "custom": {
+                                                                                                                        "imports": [
+                                                                                                                            {
+                                                                                                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "schema_definition": "listvalidator.SizeAtMost(64)"
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ]
                                                                                                         }
                                                                                                     },
                                                                                                     {
@@ -3871,9 +4361,41 @@
             }
         },
         {
-            "name": "threshold",
+            "name": "ping",
             "schema": {
                 "attributes": [
+                    {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     {
                         "name": "api_version",
                         "string": {
@@ -3893,6 +4415,622 @@
                                             }
                                         ],
                                         "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^oam\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "Ping"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^Ping$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "required"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "address",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Address to ping.\nThis is a single IP address (IPv4 or IPv6) or a hostname that resolves to an IP address."
+                                    }
+                                },
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": 1
+                                        },
+                                        "description": "Count is the number of pings to send."
+                                    }
+                                },
+                                {
+                                    "name": "network_instance",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "The network instance to use for the ping. This is the named network instance on the node, typically \"default\" or some other base name.\nIf not specified, the default network instance will be used, which is typically the main/default/global network interface on the node."
+                                    }
+                                },
+                                {
+                                    "name": "node_selectors",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of selectors to select nodes to perform pings on.\nThis matches labels on TopoNode resources, including those TopoNodes in the list of nodes that pings will be performed on.\nIf no nodes are specified, and no node selectors are specified, all nodes in the given namespace will be selected."
+                                    }
+                                },
+                                {
+                                    "name": "nodes",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of nodes to perform pings from.\nItems in the list should be the names of the nodes, where each node will have a ping performed on it.\nIf no nodes are specified, and no node selectors are specified, all nodes in the given namespace will be selected."
+                                    }
+                                },
+                                {
+                                    "name": "timeout_seconds",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": 5
+                                        },
+                                        "description": "TimeoutSeconds is the timeout for the ping in seconds."
+                                    }
+                                }
+                            ],
+                            "description": "Ping allows a ping to be initiated to a specific address on node/set of nodes."
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "details",
+                                    "list_nested": {
+                                        "computed_optional_required": "computed_optional",
+                                        "nested_object": {
+                                            "attributes": [
+                                                {
+                                                    "name": "details_1",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "computed_optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "average_time_nanoseconds",
+                                                                "int64": {
+                                                                    "computed_optional_required": "computed_optional",
+                                                                    "description": "Average time taken for a ping reply."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "max_time_nanoseconds",
+                                                                "int64": {
+                                                                    "computed_optional_required": "computed_optional",
+                                                                    "description": "Maximum time taken for a ping reply."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "min_time_nanoseconds",
+                                                                "int64": {
+                                                                    "computed_optional_required": "computed_optional",
+                                                                    "description": "Minimum time taken for a ping reply."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "received",
+                                                                "int64": {
+                                                                    "computed_optional_required": "required",
+                                                                    "description": "Number of pings received."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "sent",
+                                                                "int64": {
+                                                                    "computed_optional_required": "required",
+                                                                    "description": "Number of pings sent."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "std_dev_nanoseconds",
+                                                                "int64": {
+                                                                    "computed_optional_required": "computed_optional",
+                                                                    "description": "Standard deviation of time taken for all pings."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "total_time_nanoseconds",
+                                                                "int64": {
+                                                                    "computed_optional_required": "computed_optional",
+                                                                    "description": "Total time taken for all pings."
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Details of the ping result, if available."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "error",
+                                                    "string": {
+                                                        "computed_optional_required": "computed_optional",
+                                                        "description": "Error message, if the ping failed."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "network_instance",
+                                                    "string": {
+                                                        "computed_optional_required": "computed_optional",
+                                                        "description": "Network instance used to source the ping from."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "node",
+                                                    "string": {
+                                                        "computed_optional_required": "computed_optional",
+                                                        "description": "Node the ping was sourced from."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "success",
+                                                    "bool": {
+                                                        "computed_optional_required": "computed_optional",
+                                                        "description": "Indicates if the ping was successful."
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "description": "Details contains the results of the pings performed on each node.\nEach entry in the list corresponds to a node that was pinged."
+                                    }
+                                },
+                                {
+                                    "name": "result",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": "Success"
+                                        },
+                                        "description": "Result is the overall result of the ping operation.\nIt can be one of the following values:\n- \"Success\": All pings were successful.\n- \"Failed\": No pings were successful.\n- \"PartialSuccess\": Some pings were successful, but not all.",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"Success\",\n\"Failed\",\n\"PartialSuccess\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "description": "PingStatus defines the observed state of Ping"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the Ping"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "tech_support",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "oam.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^oam\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "TechSupport"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^TechSupport$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "required"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "node_selectors",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of node selectors to select nodes generate technical support packages for.\nThis matches labels on TopoNode resources.\nIf no nodes are specified, and no node selectors are specified, all nodes in the given namespace will be selected.\nThis is a list of label expressions, e.g. [\"eda.nokia.com/role=leaf\"]."
+                                    }
+                                },
+                                {
+                                    "name": "nodes",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of nodes to generate and collect technical support packages for."
+                                    }
+                                }
+                            ],
+                            "description": "Generate technical support packages for a node or set of nodes - should only do this if explicitly requested by the user."
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "failed_nodes",
+                                    "list": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of nodes failed to produce tech-support, it is populated in case of PartialSuccess\nItems in the list should be the names of the nodes, where tech-support failed"
+                                    }
+                                },
+                                {
+                                    "name": "result",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Result"
+                                    }
+                                }
+                            ],
+                            "description": "Result of the technical support package generation."
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the TechSupport"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "threshold",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "oam.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^oam\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
                                     }
                                 }
                             ]
@@ -4034,7 +5172,7 @@
                                     "name": "field",
                                     "string": {
                                         "computed_optional_required": "required",
-                                        "description": "Field to monitor for this threshold, for example `utilization`."
+                                        "description": "Field to monitor for this threshold, for example `utilization`. Only a single field may be monitored per threshold. This field must be present in the table specified by the path.\nThe field specified should be an integer field that can be compared to the specified thresholds. Nested fields are supported, for example `utilization.value` would monitor the value field inside of the nested object with key `utilization`."
                                     }
                                 },
                                 {
@@ -4044,7 +5182,7 @@
                                         "default": {
                                             "static": false
                                         },
-                                        "description": "Enable or disable generation of a topology overlay for this threshold."
+                                        "description": "Enable or disable generation of a topology overlay for this threshold.\nThis functionality is only supported for paths in the .namespace.node table."
                                     }
                                 },
                                 {
@@ -4058,7 +5196,7 @@
                                     "name": "path",
                                     "string": {
                                         "computed_optional_required": "required",
-                                        "description": "Path to monitor for this threshold. This should be the full EDB path to the table containing the field you wish to trigger a threshold on.\nFor example, to monitor the utilization field of the component volume table, you would use `.namespace.node.normal.components_eda_nokia_com.v1.controlmodule.volume`, and set field to `utilization`."
+                                        "description": "Path to monitor for this threshold. This should be the full EDB path (without keys) to the table containing the field you wish to trigger a threshold on.\nFor example, to monitor the utilization field of the component volume table, you would use `.namespace.node.normal.components_eda_nokia_com.v1.controlmodule.volume`, and set field to `utilization`."
                                     }
                                 },
                                 {
@@ -4070,25 +5208,25 @@
                                                 "name": "group",
                                                 "string": {
                                                     "computed_optional_required": "required",
-                                                    "description": "The group of the resource to monitor."
+                                                    "description": "The group of the resource raise alarms against, should any thresholds be breached."
                                                 }
                                             },
                                             {
                                                 "name": "kind",
                                                 "string": {
                                                     "computed_optional_required": "required",
-                                                    "description": "The kind of resource to monitor."
+                                                    "description": "The kind of resource to raise alarms against, should any thresholds be breached."
                                                 }
                                             },
                                             {
                                                 "name": "name",
                                                 "string": {
                                                     "computed_optional_required": "required",
-                                                    "description": "The name of the resource to monitor."
+                                                    "description": "The name of the resource to raise alarms against, should any thresholds be breached."
                                                 }
                                             }
                                         ],
-                                        "description": "Which resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.\nBy default a resource will attempt to be derived based on the monitored path."
+                                        "description": "Manually assign a resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.\nBy default a resource will be raised against the threshold resource itself."
                                     }
                                 },
                                 {

@@ -22,7 +22,9 @@ description: |-
 
 ### Optional
 
+- `alarms` (Attributes) (see [below for nested schema](#nestedatt--alarms))
 - `api_version` (String)
+- `deviations` (Attributes) (see [below for nested schema](#nestedatt--deviations))
 - `kind` (String)
 - `name` (String) name of the Mirror
 - `namespace` (String) the namespace scope in which to operate
@@ -106,6 +108,7 @@ Optional:
 - `destination_port_operator` (String) Operator to use when matching destinationPort, either Equals, GreaterOrEquals, or LessOrEquals.
 - `destination_port_range` (String) Range of destination ports to match, in the format n-m, e.g. 100-200,  The start and end of the range must be port numbers.
 - `destination_prefix` (String) Destination prefix to match.
+- `dscp` (List of Number) Match DSCP values.
 - `first_fragment` (Boolean) Match the first fragment only.
 - `fragment` (Boolean) Match any fragment.
 - `icmp_code` (List of Number) Match a specific ICMP code, as a number between 0-255, e.g. 0.
@@ -213,6 +216,25 @@ Optional:
 - `router` (String) Specifies the Router to reach the remote destination of the mirror, a Router and DefaultRouter reference cannot be set at the same time.
 - `source_ip` (String) Source IP to use when sending a mirror to a remote destination.  When a remote destination us used for the mirror, the sourceIP is mandatory.
 
+
+
+<a id="nestedatt--alarms"></a>
+### Nested Schema for `alarms`
+
+Optional:
+
+- `critical` (Number)
+- `major` (Number)
+- `minor` (Number)
+- `warning` (Number)
+
+
+<a id="nestedatt--deviations"></a>
+### Nested Schema for `deviations`
+
+Optional:
+
+- `count` (Number)
 
 
 <a id="nestedatt--status"></a>

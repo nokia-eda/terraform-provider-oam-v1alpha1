@@ -28,7 +28,9 @@ By using EDB as a source you are able to trigger thresholds on any published fie
 
 ### Read-Only
 
+- `alarms` (Attributes) (see [below for nested schema](#nestedatt--alarms))
 - `api_version` (String)
+- `deviations` (Attributes) (see [below for nested schema](#nestedatt--deviations))
 - `kind` (String)
 - `metadata` (Attributes) (see [below for nested schema](#nestedatt--metadata))
 - `status` (Attributes) ThresholdStatus defines the observed state of Threshold (see [below for nested schema](#nestedatt--status))
@@ -40,13 +42,15 @@ Optional:
 
 - `alarm` (Attributes) Alarm details for this threshold. (see [below for nested schema](#nestedatt--spec--alarm))
 - `enabled` (Boolean) Enable or disable this threshold.
-- `field` (String) Field to monitor for this threshold, for example `utilization`.
+- `field` (String) Field to monitor for this threshold, for example `utilization`. Only a single field may be monitored per threshold. This field must be present in the table specified by the path.
+The field specified should be an integer field that can be compared to the specified thresholds. Nested fields are supported, for example `utilization.value` would monitor the value field inside of the nested object with key `utilization`.
 - `generate_overlay` (Boolean) Enable or disable generation of a topology overlay for this threshold.
+This functionality is only supported for paths in the .namespace.node table.
 - `name` (String) The name of this threshold. This name will be used to generate the alarm name, so should follow CamelCase conventions, e.g. VolumeUtilization.
-- `path` (String) Path to monitor for this threshold. This should be the full EDB path to the table containing the field you wish to trigger a threshold on.
+- `path` (String) Path to monitor for this threshold. This should be the full EDB path (without keys) to the table containing the field you wish to trigger a threshold on.
 For example, to monitor the utilization field of the component volume table, you would use `.namespace.node.normal.components_eda_nokia_com.v1.controlmodule.volume`, and set field to `utilization`.
-- `resource` (Attributes) Which resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.
-By default a resource will attempt to be derived based on the monitored path. (see [below for nested schema](#nestedatt--spec--resource))
+- `resource` (Attributes) Manually assign a resource to associate with this threshold. This overrides the destination resource in alarms raised as a result of threshold breaches.
+By default a resource will be raised against the threshold resource itself. (see [below for nested schema](#nestedatt--spec--resource))
 - `thresholds` (Attributes) Severities and their associated values. (see [below for nested schema](#nestedatt--spec--thresholds))
 
 <a id="nestedatt--spec--alarm"></a>
@@ -64,9 +68,9 @@ Optional:
 
 Optional:
 
-- `group` (String) The group of the resource to monitor.
-- `kind` (String) The kind of resource to monitor.
-- `name` (String) The name of the resource to monitor.
+- `group` (String) The group of the resource raise alarms against, should any thresholds be breached.
+- `kind` (String) The kind of resource to raise alarms against, should any thresholds be breached.
+- `name` (String) The name of the resource to raise alarms against, should any thresholds be breached.
 
 
 <a id="nestedatt--spec--thresholds"></a>
@@ -84,6 +88,25 @@ This value must be greater than the minorThreshold.
 - `minor_threshold` (Number) The minimum average utilization over the last 1 minute to trigger a minor alarm.
 - `warning_threshold` (Number) The minimum average utilization over the last 1 minute to trigger a warning alarm.
 
+
+
+<a id="nestedatt--alarms"></a>
+### Nested Schema for `alarms`
+
+Read-Only:
+
+- `critical` (Number)
+- `major` (Number)
+- `minor` (Number)
+- `warning` (Number)
+
+
+<a id="nestedatt--deviations"></a>
+### Nested Schema for `deviations`
+
+Read-Only:
+
+- `count` (Number)
 
 
 <a id="nestedatt--metadata"></a>
