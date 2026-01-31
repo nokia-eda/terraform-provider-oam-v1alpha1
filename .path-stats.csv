@@ -9,7 +9,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/_deleted,GET,com.nokia.eda.oam.v1alpha1.Mirror_DeletedResources,,false,false,false
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name},DELETE,Status,mirror,true,false,true
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name},GET,com.nokia.eda.oam.v1alpha1.Mirror,mirror,true,true,true
-/apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name},PATCH,Patch,,false,false,false
+/apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name},PATCH,com.nokia.eda.oam.v1alpha1.Mirror,,false,false,false
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name},PUT,com.nokia.eda.oam.v1alpha1.Mirror,mirror,true,false,true
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}/_targets,GET,IntentTargets,,false,false,false
@@ -21,7 +21,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/_deleted,GET,com.nokia.eda.oam.v1alpha1.Threshold_DeletedResources,,false,false,false
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name},DELETE,Status,threshold,true,false,true
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name},GET,com.nokia.eda.oam.v1alpha1.Threshold,threshold,true,true,true
-/apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name},PATCH,Patch,,false,false,false
+/apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name},PATCH,com.nokia.eda.oam.v1alpha1.Threshold,,false,false,false
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name},PUT,com.nokia.eda.oam.v1alpha1.Threshold,threshold,true,false,true
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}/_targets,GET,IntentTargets,,false,false,false

@@ -19,14 +19,6 @@ k8_s_topology_request:
       path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}/_topology
       method: POST
 
-patch:
-  - update:
-      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
-      method: PATCH
-  - update:
-      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
-      method: PATCH
-
 resource_history:
   - read:
       path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}/_revs
@@ -87,6 +79,9 @@ com.nokia.eda.oam.v1alpha1.mirror:
   - update:
       path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
       method: PUT
+  - update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/mirrors/{name}
+      method: PATCH
 
 com.nokia.eda.oam.v1alpha1.mirror_list:
   - read:
@@ -146,6 +141,9 @@ com.nokia.eda.oam.v1alpha1.threshold:
   - update:
       path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
       method: PUT
+  - update:
+      path: /apps/oam.eda.nokia.com/v1alpha1/namespaces/{namespace}/thresholds/{name}
+      method: PATCH
 
 com.nokia.eda.oam.v1alpha1.threshold_list:
   - read:
@@ -165,8 +163,8 @@ com.nokia.eda.oam.v1alpha1.threshold_deleted_resources:
 
 totalPaths: 33
 totalSchemas: 75
-usedSchemas: 21
-unusedSchemas: 54
+usedSchemas: 20
+unusedSchemas: 55
 unusedSchemaList:
   - AppGroupVersion
   - ErrorIndex
@@ -175,6 +173,7 @@ unusedSchemaList:
   - IntentTarget
   - K8SPatchOp
   - OverlayState
+  - Patch
   - Resource
   - ResourceHistoryEntry
   - StatusDetails
